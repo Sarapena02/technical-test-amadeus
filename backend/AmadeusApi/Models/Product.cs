@@ -1,0 +1,18 @@
+using System.Runtime.CompilerServices;
+
+namespace AmadeusApi.Models
+{
+    public class Product
+    {
+        public string? Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string Category { get; set; } = string.Empty;
+        public bool IsActive { get; set; }
+        public int Stock { get; set;}
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        
+    }
+}

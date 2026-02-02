@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "D/6GTyHZ7NY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sarap\\OneDrive\\Documents\\Personal\\Tests\\Amadeus\\Test\\Technical_Test\\backend\\AmadeusApi\\AmadeusApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sarap\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.2\\microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
+    "C:\\Users\\sarap\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

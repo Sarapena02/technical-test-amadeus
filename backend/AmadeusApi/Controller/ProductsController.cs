@@ -16,7 +16,7 @@ namespace AmadeusApi.Controller
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(string id)
+        public IActionResult GetById(int id)
         {
             var product = Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
@@ -29,7 +29,7 @@ namespace AmadeusApi.Controller
         [HttpPost]
         public IActionResult Create(Product newProduct)
         {
-            newProduct.Id = Guid.NewGuid().ToString();
+            newProduct.Id = Products.Count > 0 ? Products.Max(p => p.Id) + 1 : 1;
             newProduct.CreatedAt = DateTime.UtcNow;
             newProduct.UpdatedAt = DateTime.UtcNow;
             Products.Add(newProduct);
@@ -38,7 +38,7 @@ namespace AmadeusApi.Controller
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(string id, Product updateProduct)
+        public IActionResult Update(int id, Product updateProduct)
         {
             var product = Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
@@ -58,7 +58,7 @@ namespace AmadeusApi.Controller
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(int id)
         {
             var product = Products.FirstOrDefault(p => p.Id == id);
             if (product == null)

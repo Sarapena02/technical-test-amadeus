@@ -10,7 +10,7 @@ namespace AmadeusApi.Controller
     {
         private readonly ProductDbContext _context;
 
-        // 🔥 ESTE CONSTRUCTOR ES CLAVE
+      
         public ProductsController(ProductDbContext context)
         {
             _context = context;
@@ -20,7 +20,7 @@ namespace AmadeusApi.Controller
         public IActionResult GetAll()
         {
             var products = _context.Products.ToList();
-            return Ok(products); // ✅ corregido
+            return Ok(products); 
         }
 
         [HttpGet("{id}")]

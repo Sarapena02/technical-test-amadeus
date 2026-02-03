@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Products } from '../../models/products.model';
 import { ProductsService } from '../../services/products.service';
+import { create } from 'domain';
 
 @Component({
   selector: 'app-products-form',
@@ -14,6 +15,8 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsFormComponent {
 
   @Output() refresh = new EventEmitter<void>();
+
+  @Output() productCreated = new EventEmitter<any>();
 
   editingProductId: number | null = null;
 
@@ -43,9 +46,9 @@ export class ProductsFormComponent {
       // CREATE
       this.productsService
         .createProduct(this.newProduct)
-        .subscribe(() => {
+        .subscribe((createdProduct) => {
+          this.productCreated.emit(createdProduct);
           this.resetForm();
-          this.refresh.emit();
         });
     }
   }

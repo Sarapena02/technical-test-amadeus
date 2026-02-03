@@ -9,6 +9,7 @@
       <th>Stock</th>
       <th>Status</th>
       <th>SKU</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -25,8 +26,17 @@
       </td>
       <td>{{ product.sku }}</td>
       <td>
-        <button *ngIf="product.id" (click)="deleteProduct(product.id)">Delete</button>
-        <button *ngIf="product.id" (click)="onEdit(product)">Edit</button>
+        <button
+          *ngIf="product.id"
+          (click)="onDelete(product.id)">
+          Delete
+        </button>
+
+        <button
+          *ngIf="product.id"
+          (click)="onEdit(product)">
+          Edit
+        </button>
       </td>
     </tr>
   </tbody>

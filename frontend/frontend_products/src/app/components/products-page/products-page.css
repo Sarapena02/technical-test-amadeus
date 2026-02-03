@@ -1,57 +1,71 @@
-.product-form {
+
+/* FORM CARD */
+.form-panel {
+    width: 100%;
+  max-width: 520px;
+  margin: 0 auto 30px;   
   background: #ffffff;
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  margin-bottom: 32px;
-  max-width: 1100px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  box-sizing: border-box; 
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* FORM */
+.product-form {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-.field.full {
-  grid-column: span 3;
+.form-row select:nth-child(3) {
+  grid-column: span 2;
 }
 
-label {
-  font-weight: 600;
-  margin-bottom: 6px;
-  font-size: 14px;
+/* INPUTS */
+input,
+select,
+textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  font-size: 15px;
+  background: #fafafa;
 }
 
-input, select, textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background: white;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25,118,210,0.15);
 }
 
 textarea {
   resize: vertical;
-  min-height: 70px;
+  min-height: 90px;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px;
-  background: #1976d2;
+/* BOTON SUBMIT */
+.product-form button {
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
   color: white;
-  border: none;
-  border-radius: 6px;
   font-weight: 600;
+  border: none;
   cursor: pointer;
 }
 
-button:disabled {
+.product-form button:disabled {
   background: #b0bec5;
   cursor: not-allowed;
 }

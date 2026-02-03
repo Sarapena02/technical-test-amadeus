@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Products } from '../../models/products.model';
-import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-products-list',
@@ -10,27 +9,18 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css',
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent {
 
-  @Input() products: Products [] = [];
+  @Input() products: Products[] = [];
 
-  @Output() editProduct = new EventEmitter<Products>();
+  @Output() delete = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<Products>();
 
-
-  constructor(private productsService: ProductsService) {}
-
-
-
-  onEdit(product: Products){
-    this.editProduct.emit(product);
+  onDelete(productId: number): void {
+    this.delete.emit(productId);
   }
 
-  ngOnInit(): void {
+  onEdit(product: Products): void {
+    this.edit.emit(product);
   }
-
- deleteProduct(id: number): void {
-    this.productsService.deleteProduct(id)
-      .subscribe();
- }
-
 }

@@ -3,6 +3,8 @@
   border-radius: 14px;
   padding: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  width: 100%;
+  box-sizing: border-box  ;
 }
 .products-table {
   width: 100%;
@@ -11,26 +13,36 @@
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
+  table-layout: fixed;
 }
 
-.products-table th {
+.products-table thead th {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
   color: white;
-  padding: 14px;
-  font-size: 13px;
+  padding: 14px 10px;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: .4px;
+  letter-spacing: .6px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .products-table td {
-  padding: 14px;
+  padding: 14px 10px;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
   color: var(--text);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.products-table tr:last-child td {
-  border-bottom: none;
+.products-table thead th:last-child,
+.products-table tbody td:last-child {
+  width: 130px;         
+  white-space: nowrap;     
 }
 
 .products-table tbody tr {
@@ -38,7 +50,7 @@
 }
 
 .products-table tbody tr:hover {
-  background: #f5f9ff;
+  background: #fef9f0;
   transform: scale(1.002);
 }
 
@@ -54,13 +66,14 @@
 .actions {
   display: flex;
   gap: 8px;
+  justify-content: center; 
 }
 
 .actions button {
   padding: 6px 12px;
   font-size: 12px;
   border-radius: var(--radius-sm);
-  background: #e3f2fd;
+  background: #fef3c7;
   color: var(--primary);
   border: none;
   cursor: pointer;
@@ -68,15 +81,15 @@
 }
 
 .actions button:hover {
-  background: #bbdefb;
+  background: #fde68a;
   transform: translateY(-1px);
 }
 
 .actions .danger {
-  background: #fdecea;
+  background: #fef2f2;
   color: var(--danger);
 }
 
 .actions .danger:hover {
-  background: #f9c9c8;
+  background: #fecaca;
 }

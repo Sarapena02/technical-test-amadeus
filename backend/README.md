@@ -31,7 +31,7 @@ It provides CRUD operations for managing products and exposes endpoints consumed
 1. Navigate to the backend folder:
    ```bash
    cd backend/AmadeusApi
-```
+   ```
 2. Restore Dependencies
 ```bash
    dotnet restore
@@ -39,9 +39,10 @@ It provides CRUD operations for managing products and exposes endpoints consumed
 3. Run the API
    ```bash
    dotnet run
-```
+   ```
 4. Open Swagger in Browser
 ```bash
    https://localhost:<port>/swagger
 ```
 Usually the port is 5049
+

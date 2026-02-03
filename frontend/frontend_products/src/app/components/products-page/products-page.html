@@ -1,0 +1,17 @@
+<div class="products-page">
+  <h1>Products Management</h1>
+
+  <section class="products-section">
+    <app-products-form
+      (refresh)="loadProducts()">
+    </app-products-form>
+  </section>
+
+  <section class="products-section">
+    <app-products-list
+      [products]="products"
+      (editProduct)="onEditProduct($event)"
+      (refresh)="loadProducts()">
+    </app-products-list>
+  </section>
+</div>

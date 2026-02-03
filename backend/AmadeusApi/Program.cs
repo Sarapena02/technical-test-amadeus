@@ -10,6 +10,19 @@ builder.Services.AddControllers(); // Add controllers
 builder.Services.AddDbContext<ProductDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 ); // Add DbContext with SQL Server
+builder.Services.AddEndpointsApiExplorer(); // Add endpoints API explorer
+builder.Services.AddSwaggerGen(); // Add Swagger generator
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+}); // Add CORS policy
 
 var app = builder.Build();
 
@@ -17,11 +30,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
 }
 
+app.UseCors("AllowAngular");
 app.MapControllers();
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

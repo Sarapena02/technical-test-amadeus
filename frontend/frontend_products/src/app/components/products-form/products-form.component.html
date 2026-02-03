@@ -1,0 +1,57 @@
+<div class="products-page">
+
+  <!-- FORMULARIO -->
+  <div class="form-panel">
+    <h3>Add Product</h3>
+
+    <form #productForm="ngForm"
+          (ngSubmit)="submitForm()"
+          class="product-form">
+
+      <!-- Row 1 -->
+      <div class="form-row">
+        <input type="text" [(ngModel)]="newProduct.name" name="name" placeholder="Name" required />
+      </div>
+
+      <!-- Description -->
+      <textarea [(ngModel)]="newProduct.description"
+                name="description"
+                placeholder="Description"
+                required></textarea>
+
+      <!-- Row 2 -->
+      <div class="form-row">
+        <select [(ngModel)]="newProduct.category" name="categorySelect" required>
+          <option value="">Select category</option>
+          <option value="Tech">Tech</option>
+          <option value="Home">Home</option>
+          <option value="Office">Office</option>
+        </select>
+
+        <select [(ngModel)]="newProduct.brand" name="brand" required>
+          <option value="">Select brand</option>
+          <option value="Asus">Asus</option>
+          <option value="Ikea">Ikea</option>
+          <option value="Panamericana">Panamericana</option>
+        </select>
+
+        <select [(ngModel)]="newProduct.isActive" name="isActive" required>
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">Inactive</option>
+        </select>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="form-row">
+        <input type="number" [(ngModel)]="newProduct.price" name="price" placeholder="Price" required />
+        <input type="number" [(ngModel)]="newProduct.stock" name="stock" placeholder="Stock" required />
+      </div>
+
+      <!-- SKU -->
+      <input type="text" [(ngModel)]="newProduct.sku" name="sku" placeholder="SKU" required />
+
+      <button type="submit" [disabled]="!productForm.valid">
+        Add Product
+      </button>
+    </form>
+  </div>

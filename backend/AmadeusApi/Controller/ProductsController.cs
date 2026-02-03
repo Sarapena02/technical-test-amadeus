@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AmadeusApi.Models;
+using AmadeusApi.Data;
 
 namespace AmadeusApi.Controller
 {
@@ -7,18 +8,25 @@ namespace AmadeusApi.Controller
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private static readonly List<Product> Products = new();
+        private readonly ProductDbContext _context;
+
+        // 🔥 ESTE CONSTRUCTOR ES CLAVE
+        public ProductsController(ProductDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(Products);
+            var products = _context.Products.ToList();
+            return Ok(products); // ✅ corregido
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var product = Products.FirstOrDefault(p => p.Id == id);
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -29,18 +37,23 @@ namespace AmadeusApi.Controller
         [HttpPost]
         public IActionResult Create(Product newProduct)
         {
-            newProduct.Id = Products.Count > 0 ? Products.Max(p => p.Id) + 1 : 1;
             newProduct.CreatedAt = DateTime.UtcNow;
             newProduct.UpdatedAt = DateTime.UtcNow;
-            Products.Add(newProduct);
 
-            return CreatedAtAction(nameof(GetById), new { id = newProduct.Id }, newProduct);
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = newProduct.Id },
+                newProduct
+            );
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, Product updateProduct)
         {
-            var product = Products.FirstOrDefault(p => p.Id == id);
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
             {
                 return NotFound();
@@ -48,28 +61,31 @@ namespace AmadeusApi.Controller
 
             product.Name = updateProduct.Name;
             product.Description = updateProduct.Description;
-            product.Price = updateProduct.Price;
             product.Category = updateProduct.Category;
+            product.Brand = updateProduct.Brand;
+            product.Price = updateProduct.Price;
             product.IsActive = updateProduct.IsActive;
             product.Stock = updateProduct.Stock;
+            product.SKU = updateProduct.SKU;
             product.UpdatedAt = DateTime.UtcNow;
 
+            _context.SaveChanges();
             return Ok(product);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var product = Products.FirstOrDefault(p => p.Id == id);
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            Products.Remove(product);
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+
             return NoContent();
         }
-
-
     }
 }

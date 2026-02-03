@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+:root {
+  --primary: #1976d2;
+  --primary-light: #42a5f5;
+  --danger: #e53935;
+  --success: #2e7d32;
+
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --border: #e0e0e0;
+  --text: #333;
+  --muted: #9e9e9e;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-soft: 0 6px 20px rgba(0,0,0,.08);
+  --shadow-hover: 0 10px 30px rgba(0,0,0,.12);
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+.products-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 32px;
+  padding: 32px;
+  align-items: flex-start;
+}
+
+

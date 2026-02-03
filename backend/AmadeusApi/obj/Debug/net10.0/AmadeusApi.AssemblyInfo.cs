@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AmadeusApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b83b8a8389a825dce4ccdeda427eb42b4d486fca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e81f0013a29b9df4183e7ea20d255b84e41b8d1c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AmadeusApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AmadeusApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
